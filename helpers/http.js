@@ -1,5 +1,6 @@
 import axios from "axios";
-const BASE_URL = process.env.API_URL;
+import getEnvs from "../envs";
+const BASE_URL = getEnvs()["API_URL"];
 
 const get = (url, config = {}) => {
   return axios.get(`${BASE_URL}${url}`, config);

@@ -1,21 +1,21 @@
 import React from "react";
+import numberHelper from "../../../../helpers/number";
 
-export default function info() {
+export default function info({ product }) {
   return (
-    <div className="col-md-5">
-      <h3 className="mb-3">نام عنوان محصول</h3>
+    <div className="col-md-6">
+      <h3 className="mb-3">{product.title}</h3>
       <div className="price mb-4">
-        <del className="text-muted mr-2">
-          <span className="h6">49.000 تومان</span>
-        </del>
-        <span className="h5">32.000 تومان</span>
+        <span className="h5">
+          <span className="pl-2 letter-spacing-finance-number">
+            {numberHelper.toPersianNum(
+              numberHelper.toFormatFinanceNumber(product.price)
+            )}
+          </span>
+          تومان
+        </span>
       </div>
-      <p className="text-muted">
-        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-        از طراحان گرافیک استلورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-        صنعت چاپ و با استفاده از طراحان گرافیک استلورم ایپسوم متن ساختگی با
-        تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
-      </p>
+      <p className="text-muted">{product.description}</p>
       <form className="form-inline my-lg-5 mb-4">
         <input
           type="number"

@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 
 export default function Header() {
   return (
@@ -25,21 +24,21 @@ export default function Header() {
                   </span>
                 </li>
               </ul>
-              {/* <Link href="#" className="text-decoration-none text-dark ml-2"> */}
+              {/* <a href="#" className="text-decoration-none text-dark ml-2"> */}
               {/* <i className="vl-cart1"></i> */}
-              {/* </Link> */}
+              {/* </a> */}
             </div>
           </div>
         </div>
       </section>
 
-      {/* <header className="app-header">
+      <header className="app-header">
         <div className="container">
           <div className="row">
             <div className="col-12">
               <div className="branding-wrap">
                 <div className="navbar-brand float-left">
-                  <Link className="" href="#">
+                  <a className="" href="#">
                     <img
                       className="logo-light"
                       src="assets/img/logo.png"
@@ -52,7 +51,7 @@ export default function Header() {
                       srcset="assets/img/logo-dark@2x.png 2x"
                       alt="CLab"
                     />
-                  </Link>
+                  </a>
                 </div>
                 <div className="nav-btn hamburger hamburger--slider js-hamburger ">
                   <div className="hamburger-box">
@@ -67,35 +66,16 @@ export default function Header() {
                     هم اکنون بخرید
                   </span>
                 </div>
-                <ul className="vlmenu light-sub-menu slide-effect float-right fade-effect">
+                <ul class="vlmenu light-sub-menu slide-effect float-right fade-effect">
                   <li>
-                    <span href="#">
-                      {" "}
-                      فروشگاه
-                      <i className="fa fa-angle-down"></i>
-                      <i className="arrow fa fa-angle-right"></i>
-                    </span>
-                    <ul>
-                      <li>
-                        شبکه فروشگاه 2 <Link href="#">شبکه فروشگاه 2 </Link>{" "}
-                      </li>
-                      <li>
-                        شبکه فروشگاه 2 <Link href="#">شبکه فروشگاه 3 </Link>{" "}
-                      </li>
-                      <li>
-                        شبکه فروشگاه 2 <Link href="#">شبکه فروشگاه 4 </Link>
-                      </li>
-                      <li>
-                        شبکه فروشگاه 2 <Link href="#">تک فروش </Link>
-                      </li>
-                    </ul>
+                    <a href="/products">محصولات</a>
                   </li>
                 </ul>
               </nav>
             </div>
           </div>
         </div>
-      </header> */}
+      </header>
     </>
   );
 }

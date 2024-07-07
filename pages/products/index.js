@@ -3,6 +3,7 @@ import ShopLayout from "../../app/component/layouts/Shop";
 import ProductList from "../../app/component/products/List";
 import toastHelper from "../../helpers/toast";
 import { ToastContainer, toast } from "react-toastify";
+import getEnvs from "../../envs";
 
 export default function products({ products }) {
   if (!products) {
@@ -11,7 +12,7 @@ export default function products({ products }) {
       toastHelper.getOptionErrorToast()
     );
   }
-
+  
   return (
     <ShopLayout title="فروشگاه - خانه">
       {products && <ProductList products={products} />}
@@ -21,7 +22,7 @@ export default function products({ products }) {
 
 export async function getStaticProps() {
   try {
-    const response = await fetch(process.env.API_URL + "/api/v1/shop/products");
+    const response = await fetch(getEnvs()['API_URL'] + "/api/v1/shop/products");
     const products = await response.json();
     return {
       props: {

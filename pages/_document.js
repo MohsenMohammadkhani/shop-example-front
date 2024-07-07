@@ -43,7 +43,7 @@ export default class CustomDocument extends Document {
             href="/static/assets/vendor/vl-nav/css/effects/slide-menu.css"
           />
         </Head>
-        <body className="bg-gray">
+        <body className="bg-gray" id="body-page">
           <Main />
           <NextScript />
         </body>
