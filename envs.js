@@ -4,12 +4,14 @@ export default function getEnvs() {
   } else if (process.env.NODE_ENV == "production") {
     return productions;
   }
-} 
+}
 
 const development = {
   API_URL: "http://localhost:8000",
+  REACT_APP_STATE: "DEVELOPMENT",
 };
 
 const productions = {
   API_URL: "http://localhost:8000",
+  REACT_APP_STATE: "PRODUCTION",
 };
