@@ -14,15 +14,15 @@ export default function Header() {
             <div className="col-md-5 text-md-right">
               <ul className="list-inline m-0 d-inline mr-2">
                 <li className="list-inline-item font-size-14">
-                  <span href="#" className="text-dark">
+                  <a href="/login" className="text-dark">
                     ورود
-                  </span>
+                  </a>
                 </li>
-                <li className="list-inline-item font-size-14 ml-2">
+                {/* <li className="list-inline-item font-size-14 ml-2">
                   <span href="#" className="text-dark">
                     ایجاد حساب کاربری
                   </span>
-                </li>
+                </li> */}
               </ul>
               {/* <a href="#" className="text-decoration-none text-dark ml-2"> */}
               {/* <i className="vl-cart1"></i> */}
@@ -61,14 +61,13 @@ export default function Header() {
               </div>
 
               <nav id="vl-menu">
-                <div className="float-right nav-extra-link">
-                  <span href="#" className="btn btn-sm btn-pill btn-theme mt-3">
-                    هم اکنون بخرید
-                  </span>
-                </div>
+                 
                 <ul class="vlmenu light-sub-menu slide-effect float-right fade-effect">
                   <li>
                     <a href="/products">محصولات</a>
+                  </li>
+                  <li>
+                    <a href="/cart">سبد خرید</a>
                   </li>
                 </ul>
               </nav>

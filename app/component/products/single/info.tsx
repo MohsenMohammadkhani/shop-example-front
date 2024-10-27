@@ -5,41 +5,109 @@ import useAppState from "../../../../state/useAppState";
 export default function info({ product }) {
   const { state, dispatch } = useAppState();
   const [isClient, setIsClient] = useState(false);
-  console.log("==1==")
-  console.log(state)
-  console.log("==1==")
+
+  function decreaseValueInput() {
+    if (!document.querySelector("#count-product-on-cart")) {
+      return;
+    }
+    let currentValue = parseInt(
+      document.querySelector("#count-product-on-cart").value
+    );
+   
+ 
+    if ( currentValue == 2) {
+      const tagHtmlButtonDecrease = document.querySelector(
+        `.btn-danger`
+      );
+      const iconMinus = document.querySelector(
+        `.btn-danger .fa-minus`
+      );
+
+      tagHtmlButtonDecrease.removeChild(iconMinus);
+      const iconTrash = document.createElement("i");
+      iconTrash.classList = "fa fa-trash";
+      tagHtmlButtonDecrease.appendChild(iconTrash);
+    }
+    document.querySelector("#count-product-on-cart").value = currentValue - 1;
+  }
+
+  function increaseValueInput() {
+    if (!document.querySelector("#count-product-on-cart")) {
+      return;
+    }
+    let currentValue = parseInt(
+      document.querySelector("#count-product-on-cart").value
+    );
+    document.querySelector("#count-product-on-cart").value = currentValue + 1;
+  }
+
   useEffect(() => {
     setIsClient(true);
   }, []);
 
   function addProductToCart(e) {
     e.preventDefault();
+   
     dispatch({
       type: "ADD_PRODUCT_TO_CART",
       payload: {
         productID: product.id,
         price: product.price,
         title: product.title,
+        slug: "/products/" + product.slug,
         count: 1,
-        thumbnail: product.thumbnail,
+        thumbnail: product["attributes"]["images_path"][0],
       },
     });
+    increaseValueInput();
+  }
+
+  function subtractProductToCart(e) {
+    e.preventDefault();
+    dispatch({
+      type: "SUBTRACT_PRODUCT_TO_CART",
+      payload: {
+        productID: product.id,
+      },
+    });
+    decreaseValueInput();
   }
 
   function showCountSelectUser() {
     const cart = state.cart;
     const productID = product.id;
 
+    if (cart === undefined) {
+      return (
+        <div className="btn btn-primary hover" onClick={addProductToCart}>
+          <i className="fa fa-shopping-cart pr-3"></i>افزودن به سبد خرید
+        </div>
+      );
+    }
+
     if (cart[productID] === undefined) {
-      return;
+      return (
+        <div className="btn btn-primary hover" onClick={addProductToCart}>
+          <i className="fa fa-shopping-cart pr-3"></i>افزودن به سبد خرید
+        </div>
+      );
     }
     return (
-      <input
-        type="number"
-        defaultValue={state.cart[productID].count}
-        className="form-control form-qty mr-2 w-25  "
-        placeholder="1"
-      />
+      <>
+        <span className="btn btn-success hover" onClick={addProductToCart}>
+          <i className="fa fa-plus"></i>
+        </span>
+        <input
+          type="number"
+          id="count-product-on-cart"
+          defaultValue={state.cart[productID].count}
+          className="form-control form-qty w-25 hide-top-bottom-icon "
+          placeholder="1"
+        />
+        <span className="btn btn-danger hover" onClick={subtractProductToCart}>
+          <i className="fa fa-minus"></i>
+        </span>
+      </>
     );
   }
 
@@ -61,9 +129,6 @@ export default function info({ product }) {
           <p className="text-muted">{product.description}</p>
           <div className="form-inline my-lg-5 mb-4">
             {showCountSelectUser()}
-            <div className="btn btn-primary hover" onClick={addProductToCart}>
-              <i className="fa fa-shopping-cart pr-3"></i>افزودن به سبد خرید
-            </div>
           </div>
           <div className="card border-0 font-size-14">
             <div className="">

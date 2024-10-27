@@ -5,6 +5,7 @@ export default function Footer() {
   return (
     <>
       <footer className="app-footer bg-dark pb-0 border-0 text-md-left text-center">
+      
         <div className="container">
           <div className="row align-items-center mb-md-5 mb-3">
             <div className="col-md-4">
@@ -97,6 +98,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
+      
         <div className="app-secondary-footer mt-md-5 mt-3">
           <div className="container">
             <div className="row">
